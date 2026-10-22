@@ -28,7 +28,7 @@ body {
 header { 
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #002b5c, #0066cc, #00a8ff); 
+    background: purple; 
     color: white; 
     text-align: center; 
     padding-top: 30px; 
@@ -485,7 +485,7 @@ button[type="submit"]:hover {
 footer { 
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #003b78, #0066cc); 
+    background: purple; 
     color: white; 
     text-align: center; 
     padding: 30px; 
