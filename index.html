@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Maya Angelico Fabra">
+  <meta name="description" content="Proyecto de Aplicaciones Web">
+  <meta name="keywords" content="Linux, administración, terminal, apt, crontab, usuarios, permisos">
+  <title>Web taller</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+  <script src="JS/main.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <h1>
+      <a>Mi sitio web de Linux</a>
+    </h1>
+
+    <nav>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#incidencias">Incidencias</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button id="btn-theme">Cambiar tema</button>
+  </header>
+
+  <main>
+
+    <section id="servicios">
+      <h2>🛠️ Servicios de mantenimiento</h2>
+      <h3>Averías y tareas habituales</h3>
+
+      <!-- Buscador de servicios -->
+      <p>
+        <label for="buscador-servicios">Buscar un servicio:</label>
+        <input
+          type="text"
+          id="buscador-servicios"
+          placeholder="Escribe para buscar..."
+        >
+      </p>
+
+      <div style="display: flex; gap: 20px;">
+
+        <article style="width: 260px;">
+          <h4 style="font-size: 20px; height: 50px; margin: 0 0 15px 0;">
+            💾 Revisión de discos
+          </h4>
+          <p style="height: 90px;">
+            Analizamos la salud del disco con smartctl y revisamos su estado para detectar posibles problemas antes de que pueda fallar.
+          </p>
+          <img src="assets/img/xarxes.jpg" alt="Disco duro de servidor" width="260" height="180" style="border-radius: 12px;">
+        </article>
+
+        <article style="width: 260px;">
+          <h4 style="font-size: 20px; height: 50px; margin: 0 0 15px 0;">
+            🧹 Limpieza de archivos
+          </h4>
+          <p style="height: 90px;">
+            Eliminamos archivos temporales y gestionamos los logs del sistema para liberar espacio y mantener un buen rendimiento.
+          </p>
+          <img src="assets/img/manteniment.jpg" alt="Terminal con archivos de log" width="260" height="180" style="border-radius: 12px;">
+        </article>
+
+        <article style="width: 260px;">
+          <h4 style="font-size: 20px; height: 50px; margin: 0 0 15px 0;">
+            🔒 Actualización de paquetes
+          </h4>
+          <p style="height: 90px;">
+            Actualizamos los paquetes con apt y aplicamos los parches de seguridad necesarios para mantener el sistema protegido.
+          </p>
+          <img src="assets/img/malware.jpg" alt="Terminal ejecutando apt upgrade" width="260" height="180" style="border-radius: 12px;">
+        </article>
+
+      </div>
+    </section>
+
+    <section id="incidencias">
+      <h2>Registro de incidencias</h2>
+
+      <form>
+        <p class="campo-obligatorio">* Campo obligatorio</p>
+
+        <p>
+          <label for="nombre">Nombre: <span class="obligatorio">*</span></label>
+          <input type="text" id="nombre" required>
+        </p>
+
+        <p>
+          <label for="correo">Correo: <span class="obligatorio">*</span></label>
+          <input type="email" id="correo" required>
+        </p>
+
+        <p>
+          <label for="telefono">Teléfono:</label>
+          <span class="telefono-contenedor">
+            <select id="pais">
+              <option value="+34">🇪🇸 +34</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+1">🇺🇸 +1</option>
+            </select>
+
+            <input
+              type="tel"
+              id="telefono"
+              inputmode="numeric"
+              oninput="comprobarTelefono(this)"
+            >
+          </span>
+
+          <span id="errorTelefono" class="error-telefono">
+            Solo se permiten números.
+          </span>
+        </p>
+
+        <p>
+          <label for="fecha">Fecha: <span class="obligatorio">*</span></label>
+          <input type="date" id="fecha" required>
+        </p>
+
+        <!-- Descripción de la incidencia con contador -->
+        <p>
+          <label for="problema">
+            ¿Cuál es tu incidencia? <span class="obligatorio">*</span>
+          </label>
+
+          <textarea
+            id="problema"
+            maxlength="150"
+            required
+            placeholder="Describe la incidencia..."
+          ></textarea>
+
+          <span id="contador-caracteres">Te quedan 150 caracteres.</span>
+        </p>
+
+        <p>
+          Tipo de incidencia: <span class="obligatorio">*</span>
+          <br>
+          <input type="radio" name="tipo" value="hardware" required> Hardware
+          <br>
+          <input type="radio" name="tipo" value="software"> Software
+          <br>
+          <input type="radio" name="tipo" value="redes"> Redes
+        </p>
+
+        <p>
+          <input type="submit" value="Enviar incidencia">
+        </p>
+      </form>
+    </section>
+
+    <section>
+      <h2>Contacto</h2>
+
+      <form id="contacto">
+        <p class="campo-obligatorio">* Campo obligatorio</p>
+
+        <p>
+          <label for="mensaje">Mensaje: <span class="obligatorio">*</span></label>
+          <input type="text" id="mensaje" required>
+        </p>
+
+        <p>
+          <input id="btnContacto" type="submit" value="Enviar mensaje">
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <address>
+      Calle Mayor, 25, Valencia, España<br>
+      Email: contacto@misitiolinux.com
+    </address>
+
+    <p>
+      © 2026 Mi sitio web de Linux. Contenido bajo licencia
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)
+      </a>.
+    </p>
+  </footer>
+
+  <!-- VENTANA MODAL -->
+  <div id="modal-exit">
+    <div class="modal-contenido">
+      <h2>✅ Formulario enviado</h2>
+      <p>El formulario se ha validado correctamente.</p>
+      <button id="btn-aceptar" type="button">Aceptar</button>
+    </div>
+  </div>
+
+</body>
+</html>
+
+ 
